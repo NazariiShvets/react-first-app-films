@@ -1,0 +1,18 @@
+@import "_null.scss";
+
+.container{
+  margin: 0 auto ;
+  max-width: 1200px;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main-component {
+  width: 100%;
+  height: 90vh;
+}
+
