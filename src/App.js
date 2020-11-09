@@ -9,7 +9,7 @@ const App = () => {
 
             <main className="App">
                 <main className="main-component">
-                    <div className="container">Zalupa</div>
+                    <div className="container"></div>
                 </main>
                 <Footer/>
             </main>
