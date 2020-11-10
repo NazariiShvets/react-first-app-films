@@ -1,6 +1,7 @@
 import React from 'react'
 // import {BrowserRouter} from "react-router-dom";
-
+import headerLogoImage from '../../img/main-logo.svg'
+import headerLoginImage from '../../img/login-icon.svg'
 import './Header.scss'
 
 const Header = () => {
@@ -8,7 +9,7 @@ const Header = () => {
         <header className="header">
             <div className="container">
                 <div className="header__row">
-                    <img src="../../img/main-logo.jpg" alt="Main-Logo" className="header__logo"/>
+                    <img src={headerLogoImage} alt="Main-Logo" className="header__logo"/>
                     <div className="header__movies-categories movies-categories">
                         <div className="movies-categories__item">My movies</div>
                         <div className="movies-categories__item">Films</div>
@@ -20,8 +21,7 @@ const Header = () => {
                         <button> Поиск </button>
                     </div>
                     <div className="header__login">
-                        <img src="../../img/login-icon.svg" alt="LoginIcon"/>
-                        <span>Login</span>
+                        <img src={headerLoginImage} alt="Login"/>
                     </div>
                 </div>
             </div>

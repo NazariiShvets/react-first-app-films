@@ -4,6 +4,8 @@ import gmail from '../img/gmail.svg'
 import linked from '../img/linkedin.svg'
 import teleg from '../img/telegram.svg'
 
+
+
 export const social = [{
     logo: git,
     url: 'https://github.com/NazariiShvets',

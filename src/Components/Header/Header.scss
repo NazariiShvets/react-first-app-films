@@ -6,6 +6,8 @@ $color: #ffffff;
   color: $color;
   min-height: 10vh;
   position: sticky;
+  font-size: 25px;
+  font-family: "Lucida Sans Unicode";
 
   &__row {
     display: flex;
@@ -22,26 +24,48 @@ $color: #ffffff;
   }
 
   &__search {
+    height: 35px;
+    display: flex;
     input {
+      border-radius: 10px;
+      min-height: 25px;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-right: 5px;
     }
 
-    label {
+    button {
+      min-height: 25px;
+      border-radius: 15px;
+      padding-left: 10px;
+      padding-right: 10px;
+
+      color: $bcolor;
+      &:hover{
+        color: aqua;
+        background-color: blueviolet;
+      }
     }
   }
 
   &__login {
     img {
-    }
-
-    span {
+      height: 35px;
+      margin-right: 10px;
+      &:hover{
+        cursor: pointer;
+      }
     }
   }
 }
 
 .movies-categories {
+  font-family: "Lucida Sans Unicode";
+
   &__item {
     margin: 5px;
-    &:hover{
+
+    &:hover {
       color: aqua;
     }
   }
