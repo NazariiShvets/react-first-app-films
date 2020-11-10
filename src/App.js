@@ -1,18 +1,17 @@
 import React from 'react'
+
 import Footer from "./Components/Footer/Footer";
+import MainComponent from "./Components/MainComponent/MainComponent";
+
 
 import './App.scss'
 
-
-const App = () => {
+const App = ({social}) => {
     return (
-
-            <main className="App">
-                <main className="main-component">
-                    <div className="container">Zalupa</div>
-                </main>
-                <Footer/>
-            </main>
+        <main className="App">
+            <MainComponent/>
+            <Footer social={social}/>
+        </main>
     )
 }
 

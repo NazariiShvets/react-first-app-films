@@ -1,0 +1,49 @@
+$bcolor: #db2428;
+$color: #ffffff;
+
+.header {
+  background-color: $bcolor;
+  color: $color;
+  min-height: 10vh;
+  position: sticky;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    height: 10vh;
+  }
+
+  &__movies-categories {
+    display: flex;
+  }
+
+  &__search {
+    input {
+    }
+
+    label {
+    }
+  }
+
+  &__login {
+    img {
+    }
+
+    span {
+    }
+  }
+}
+
+.movies-categories {
+  &__item {
+    margin: 5px;
+    &:hover{
+      color: aqua;
+    }
+  }
+
+}
