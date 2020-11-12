@@ -65,8 +65,13 @@ $color: #ffffff;
   &__item {
     margin: 5px;
 
+    &:visited{
+      color: $color;
+      text-decoration: none;
+    }
     &:hover {
       color: aqua;
+      cursor: pointer;
     }
   }
 

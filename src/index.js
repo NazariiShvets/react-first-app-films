@@ -2,15 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import store from "./Redux/reduxStore";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import {social} from "./Data/data";
+const rerenderHtml = (state) => {
+    ReactDOM.render(
+        <React.StrictMode>
+            <App  state={state} dispatch={store.dispatch.bind(store)} />
+        </React.StrictMode>,
+        document.getElementById('root')
+    )
+}
 
-ReactDOM.render(
-    <React.StrictMode>
-        <App social={social} />
-    </React.StrictMode>,
-    document.getElementById('root')
-);
+rerenderHtml(store.getState())
+
+store.subscribe( () => {
+    let state = store.getState()
+    rerenderHtml(state)
+})
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
