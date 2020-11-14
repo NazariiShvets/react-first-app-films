@@ -1,8 +1,9 @@
 import React from 'react'
 
 import './Films.scss'
+//
 
-const Films = () => {
+export const Films = (props) => {
     return (
         <div className='container'>Films</div>
     )

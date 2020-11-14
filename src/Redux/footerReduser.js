@@ -5,7 +5,7 @@ import linked from "../img/linkedin.svg";
 import teleg from "../img/telegram.svg";
 
 const initialState = {
-    socialLinks : [{
+    socialLinks: [{
         logo: git,
         url: 'https://github.com/NazariiShvets',
         id: 1
@@ -29,8 +29,13 @@ const initialState = {
     ]
 }
 
-const footerReducer = (state = initialState , action) => {
-    switch (action){
+const footerReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case 'ADD-SOCIAL-LINK' :
+            return {
+                ...state,
+                socialLinks: [...state.socialLinks,{logo : '', url : '',id : 6}],
+            }
         default :
             return state
     }

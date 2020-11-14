@@ -3,9 +3,10 @@ const initialState = {
 }
 
 const headerReducer = (state = initialState, action) => {
-    switch (action) {
+    const newState = {...state}
+    switch (action.type) {
         default :
-            return state
+            return newState
     }
 }
 

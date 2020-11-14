@@ -1,6 +1,6 @@
 export const accessToken = process.env.REACT_APP_MOVIES_API_KEY;
 export const https = 'https://api.themoviedb.org/3';
-export const movies = [
+const movies = [
     {
         title: 'avengers',
         id: 1,

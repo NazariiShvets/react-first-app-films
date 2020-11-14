@@ -1,43 +1,36 @@
-import React, {useState} from "react"
-import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
+import React from "react"
+import {Redirect, Route, Switch} from "react-router-dom";
 import Header from "./Components/Header/Header";
 import MyMovies from "./Components/MyMovies/MyMovies";
-import Films from "./Components/Films/Films";
-import Serials from "./Components/Serials/Serials";
-import Cartoons from "./Components/Cartoons/Cartoons";
-import Home from "./Components/Home/Home";
-import Footer from "./Components/Footer/Footer";
-
+import HomeContainer from "./Components/Home/HomeContainer";
+import CartoonsContainer from "./Components/Cartoons/CartoonsContainer";
+import SerialsContainer from "./Components/Serials/SerialsContainer";
+import FilmsContainer from "./Components/Films/FilmsContainer";
 import './App.scss'
+import FooterContainer from "./Components/Footer/FooterContainer";
 
-const App = ({state, dispatch}) => {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [animating, setAnimating] = useState(false);
+const App = () => {
     return (
-        <BrowserRouter>
-            <Switch>
-                <div className="App">
-                    <Header/>
-                    <main className="main-component">
-                        <Route path='/my_movies' render={MyMovies}/>
-                        <Route path='/films' render={Films}/>
-                        <Route path='/serials' render={Serials}/>
-                        <Route path='/cartoons' render={Cartoons}/>
-                        <Route path='/home'
-                               render={() => <Home
-                                   items={state.mainPageReducer.home.items} activeIndex={activeIndex}
-                                                   setActiveIndex={setActiveIndex}
-                                                   animating={animating}
-                                                   setAnimating={setAnimating}/>}/>
-                        <Route path='/' exact>
-                            <Redirect to='/home'/>
-                        </Route>
-                    </main>
-                    <Footer socialLinks={state.footerReducer.socialLinks}/>
-                </div>
-            </Switch>
-        </BrowserRouter>
+        <div className="App">
+            <Header/>
+            <main className="main-component">
+                <Switch>
+                    <Route path='/my_movies' component={MyMovies}/>
+                    <Route path='/films' component={FilmsContainer}/>
+                    <Route path='/serials' component={SerialsContainer}/>
+                    <Route path='/cartoons' component={CartoonsContainer}/>
+                    <Route path='/home' component={HomeContainer}/>
+                    <Route path='/' exact>
+                        <Redirect to='/home'/>
+                    </Route>
+                </Switch>
+            </main>
+            <FooterContainer/>
+        </div>
     )
 }
 
 export default App
+
+
+
