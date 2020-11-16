@@ -5,14 +5,15 @@ import headerReducer from "./headerReducer";
 import homePageReducer from "./homePageReducer";
 import filmsPageReducer from "./filmsPageReducer";
 import serialsPageReducer from "./serialsPageReducer";
+import filmCardReducer from "./filmCardReducer";
 
-import cartoonsPageReducer from "./cartoonsPageReducer";
+
 let reducers = combineReducers({
     header: headerReducer,
     homePage: homePageReducer,
     filmsPage: filmsPageReducer,
     serialsPage: serialsPageReducer,
-    cartoonsPage: cartoonsPageReducer,
+    filmCard : filmCardReducer,
     footer: footerReducer,
 })
 

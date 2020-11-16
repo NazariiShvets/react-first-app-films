@@ -6,7 +6,13 @@ import {Button} from "reactstrap";
 import './Header.scss'
 
 
-const Header = () => {
+const Header = props => {
+    const inputHandler = e => {
+        props.setTextToInput(e.target.value)
+    }
+    const buttonHandler = () => {
+        props.clearInputText()
+    }
     return (
         <header className="header">
             <div className="container">
@@ -15,15 +21,15 @@ const Header = () => {
                         <img src={headerLogoImage} alt="Main-Logo" className="header__logo"/>
                     </NavLink>
                     <div className="header__movies-categories movies-categories">
-                        <NavLink to='/my_movies' className="movies-categories__item">My movies</NavLink>
+                        <NavLink to='/my_collection' className="movies-categories__item">My Collection</NavLink>
                         <NavLink to='/films' className="movies-categories__item">Films</NavLink>
                         <NavLink to='/serials' className="movies-categories__item">Serials</NavLink>
-                        <NavLink to='/cartoons' className="movies-categories__item">Cartoons</NavLink>
                     </div>
                     <div className="">
-                        <input type="text"/>
-                        <Button  color="primary" >Поиск</Button>{' '}
+                        <input className='input' type="text" value={props.inputText} onInput={inputHandler}/>
+                        <Button onClick={buttonHandler}  color="warning">Поиск</Button>
                     </div>
+
                     <div className="header__login">
                         <img src={headerLoginImage} alt="Login"/>
                     </div>

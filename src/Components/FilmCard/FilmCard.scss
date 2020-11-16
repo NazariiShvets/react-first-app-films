@@ -1,0 +1,11 @@
+.film{
+  display: flex;
+  &-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 50px;
+    margin-left: 50px;
+
+  }
+}

@@ -1,6 +1,9 @@
 $bcolor: #db2428;
 $color: #ffffff;
 
+.input{
+  margin-right: 10px!important;
+}
 .header {
   background-color: $bcolor;
   color: $color;
@@ -23,40 +26,17 @@ $color: #ffffff;
     display: flex;
   }
 
-  &__search {
-    height: 35px;
-    display: flex;
-    input {
-      border-radius: 10px;
-      min-height: 25px;
-      padding-left: 10px;
-      padding-right: 10px;
-      margin-right: 5px;
-    }
-
-    button {
-      min-height: 25px;
-      border-radius: 15px;
-      padding-left: 10px;
-      padding-right: 10px;
-
-      color: $bcolor;
-      &:hover{
-        color: aqua;
-        background-color: blueviolet;
-      }
-    }
-  }
-
   &__login {
     img {
       height: 35px;
       margin-right: 10px;
-      &:hover{
+
+      &:hover {
         cursor: pointer;
       }
     }
   }
+
 }
 
 .movies-categories {
@@ -65,11 +45,13 @@ $color: #ffffff;
   &__item {
     margin: 5px;
 
-    &:visited{
+    &:visited {
       color: $color;
       text-decoration: none;
     }
+
     &:hover {
+      text-decoration: none;
       color: aqua;
       cursor: pointer;
     }

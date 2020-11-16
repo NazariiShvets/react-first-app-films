@@ -5,6 +5,7 @@
   max-width: 900px;
 }
 .App {
+  color : white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -12,7 +13,7 @@
 .main-component {
   background-color: #1a143b;
   width: 100%;
-  min-height: 90vh;
+  min-height: 80vh;
 }
 
 

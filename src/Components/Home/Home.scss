@@ -1,4 +1,9 @@
 .home {
+  h3{
+    color: #ffffff!important;
+    font-weight: bold!important;
+    font-size: 2rem!important;
+  }
   color : white;
   &-margin{
     &-top{
@@ -8,4 +13,7 @@
       margin-bottom: 50px;
     }
   }
+}
+.posters{
+  cursor: pointer;
 }

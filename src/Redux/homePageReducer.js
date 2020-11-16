@@ -24,6 +24,7 @@ const homePageReducer = (state = initialState, action) => {
     }
 }
 
+
 export const setFilmsToSlider = (filmsToSlider) => ({type: SET_FILMS_TO_SLIDER, filmsToSlider})
 export const toggleIsFetching = (isFetching)=> ({type: TOGGLE_IS_FETCHING , isFetching})
 
