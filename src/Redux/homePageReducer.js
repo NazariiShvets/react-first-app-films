@@ -3,7 +3,7 @@ const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 
 const initialState = {
     filmsToSlider: [],
-    isFetching : true,
+    isFetching: true,
 }
 
 
@@ -26,6 +26,6 @@ const homePageReducer = (state = initialState, action) => {
 
 
 export const setFilmsToSlider = (filmsToSlider) => ({type: SET_FILMS_TO_SLIDER, filmsToSlider})
-export const toggleIsFetching = (isFetching)=> ({type: TOGGLE_IS_FETCHING , isFetching})
+export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 
 export default homePageReducer

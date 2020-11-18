@@ -1,5 +1,7 @@
 import React from 'react'
+
 import './MyMovies.scss'
+
 
 const MyMovies = () => {
     return (

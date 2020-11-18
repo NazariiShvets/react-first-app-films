@@ -1,8 +1,9 @@
-import React from "react";
-import Header from "./Header";
-import {connect} from "react-redux";
-import {withRouter} from "react-router-dom";
-import {clearInputText, setTextToInput, } from "../../Redux/headerReducer";
+import React from 'react'
+import Header from './Header'
+import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
+import {clearInputText, setTextToInput,} from '../../Redux/headerReducer'
+
 
 const mapStateToProps = state => ({
     inputText: state.header.inputText,

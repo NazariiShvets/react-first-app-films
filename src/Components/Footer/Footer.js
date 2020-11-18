@@ -2,6 +2,7 @@ import React from 'react'
 
 import './Footer.scss'
 
+
 const Footer = ({socialLinks}) => {
     return (
         <footer className="footer">

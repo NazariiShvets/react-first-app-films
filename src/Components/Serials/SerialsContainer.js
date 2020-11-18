@@ -1,7 +1,8 @@
 import React from 'react'
-import {connect} from "react-redux";
-import Serials from "./Serials";
-import {setSerialsAC} from "../../Redux/serialsPageReducer";
+import {connect} from 'react-redux'
+import Serials from './Serials'
+import {setSerialsAC} from '../../Redux/serialsPageReducer'
+
 
 const mapStateToProps = state => {
     return {
@@ -11,10 +12,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setSerials : (serials) => {
-            dispatch( setSerialsAC(serials) )
+        setSerials: (serials) => {
+            dispatch(setSerialsAC(serials))
         }
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Serials)
+export default connect(mapStateToProps, mapDispatchToProps)(Serials)

@@ -1,4 +1,4 @@
-import * as axios from "axios";
+import * as axios from 'axios'
 
 // TopRated         https://api.themoviedb.org/3/movie/top_rated?api_key=6f870c3cedf60872853be1be2a364c56&language=en-US&page=1
 // NowPlaing        https://api.themoviedb.org/3/movie/now_playing?api_key=6f870c3cedf60872853be1be2a364c56&language=en-US&page=1
@@ -16,11 +16,11 @@ export const API = {
             })
     },
     getImageFilmURL(film) {
-        if (!film.backdrop_path) return "https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132484032.jpg"
+        if (!film.backdrop_path) return 'https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132484032.jpg'
         return `https://image.tmdb.org/t/p/w1280${film.backdrop_path}`
     },
     getPosterFilmURL(film) {
-        if (!film.poster_path) return "https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132484032.jpg"
+        if (!film.poster_path) return 'https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132484032.jpg'
         return `https://image.tmdb.org/t/p/original${film.poster_path}`
     },
     getFilmInfo(type = 'tv', id) {

@@ -1,13 +1,14 @@
-import React from "react"
-import {Redirect, Route, Switch} from "react-router-dom";
-import MyMovies from "./Components/MyMovies/MyMovies";
-import HomeContainer from "./Components/Home/HomeContainer";
-import SerialsContainer from "./Components/Serials/SerialsContainer";
-import FilmsContainer from "./Components/Films/FilmsContainer";
-import FooterContainer from "./Components/Footer/FooterContainer";
-import FilmCardContainer from "./Components/FilmCard/FilmCardContainer";
+import React from 'react'
+import {Redirect, Route, Switch} from 'react-router-dom'
+import MyMovies from './Components/MyMovies/MyMovies'
+import HomeContainer from './Components/Home/HomeContainer'
+import SerialsContainer from './Components/Serials/SerialsContainer'
+import FilmsContainer from './Components/Films/FilmsContainer'
+import FooterContainer from './Components/Footer/FooterContainer'
+import FilmCardContainer from './Components/FilmCard/FilmCardContainer'
 import './App.scss'
-import HeaderContainer from "./Components/Header/HeaderContainer";
+import HeaderContainer from './Components/Header/HeaderContainer'
+
 
 const App = () => {
     return (
@@ -19,7 +20,7 @@ const App = () => {
                     <Route path='/films' component={FilmsContainer}/>
                     <Route path='/serials' component={SerialsContainer}/>
                     <Route path='/home' exact component={HomeContainer}/>
-                    <Route path='/info/:id'  component={FilmCardContainer} />
+                    <Route path='/info/:id' component={FilmCardContainer}/>
                     <Route path='/' exact>
                         <Redirect to='/home'/>
                     </Route>

@@ -3,7 +3,7 @@ const CLEAR_INPUT_TEXT = 'CLEAR_INPUT_TEXT'
 
 
 const initialState = {
-    inputText : '',
+    inputText: '',
 }
 
 const headerReducer = (state = initialState, action) => {
@@ -11,7 +11,7 @@ const headerReducer = (state = initialState, action) => {
         case SET_TEXT_TO_INPUT:
             return {
                 ...state,
-                inputText:  action.inputText
+                inputText: action.inputText
             }
         case CLEAR_INPUT_TEXT:
             return {
@@ -23,7 +23,7 @@ const headerReducer = (state = initialState, action) => {
     }
 }
 
-export const setTextToInput = inputText => ({type : SET_TEXT_TO_INPUT, inputText })
-export const clearInputText = () => ({type : CLEAR_INPUT_TEXT, })
+export const setTextToInput = inputText => ({type: SET_TEXT_TO_INPUT, inputText})
+export const clearInputText = () => ({type: CLEAR_INPUT_TEXT,})
 
 export default headerReducer

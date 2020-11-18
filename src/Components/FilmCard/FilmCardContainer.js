@@ -1,9 +1,9 @@
 import React from 'react'
-import {connect} from "react-redux";
-import {setFilm, toggleIsFetching} from "../../Redux/filmCardReducer";
-import {API} from "../api/api";
-import {Spinner} from "reactstrap";
-import FilmCard from "./FilmCard";
+import {connect} from 'react-redux'
+import {setFilm, toggleIsFetching} from '../../Redux/filmCardReducer'
+import {API} from '../api/api'
+import {Spinner} from 'reactstrap'
+import FilmCard from './FilmCard'
 
 
 const mapStateToProps = state => {
@@ -33,7 +33,7 @@ class FilmCardContainer extends React.Component {
                 <div className='container'>
                     <FilmCard {...this.props} />
                 </div>
-            );
+            )
     }
 }
 

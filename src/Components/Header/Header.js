@@ -1,8 +1,8 @@
 import React from 'react'
 import headerLogoImage from '../../img/main-logo.svg'
 import headerLoginImage from '../../img/login-icon.svg'
-import {NavLink} from "react-router-dom";
-import {Button} from "reactstrap";
+import {NavLink} from 'react-router-dom'
+import {Button} from 'reactstrap'
 import './Header.scss'
 
 
@@ -27,7 +27,7 @@ const Header = props => {
                     </div>
                     <div className="">
                         <input className='input' type="text" value={props.inputText} onInput={inputHandler}/>
-                        <Button onClick={buttonHandler}  color="warning">Поиск</Button>
+                        <Button onClick={buttonHandler} color="warning">Поиск</Button>
                     </div>
 
                     <div className="header__login">

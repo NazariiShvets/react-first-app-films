@@ -1,9 +1,10 @@
 import React from 'react'
-import {connect} from "react-redux";
-import Home from "./Home";
-import {setFilmsToSlider, toggleIsFetching} from "../../Redux/homePageReducer";
-import {Spinner} from "reactstrap";
-import {API} from "../api/api";
+import {connect} from 'react-redux'
+import Home from './Home'
+import {setFilmsToSlider, toggleIsFetching} from '../../Redux/homePageReducer'
+import {Spinner} from 'reactstrap'
+import {API} from '../api/api'
+
 
 const mapStateToProps = state => {
     return {

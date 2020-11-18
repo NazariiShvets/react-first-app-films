@@ -1,8 +1,9 @@
-import git from "../img/github-logo.svg";
-import inst from "../img/instagram.svg";
-import gmail from "../img/gmail.svg";
-import linked from "../img/linkedin.svg";
-import teleg from "../img/telegram.svg";
+import git from '../img/github-logo.svg'
+import inst from '../img/instagram.svg'
+import gmail from '../img/gmail.svg'
+import linked from '../img/linkedin.svg'
+import teleg from '../img/telegram.svg'
+
 
 const initialState = {
     socialLinks: [{
@@ -34,7 +35,7 @@ const footerReducer = (state = initialState, action) => {
         case 'ADD-SOCIAL-LINK' :
             return {
                 ...state,
-                socialLinks: [...state.socialLinks,{logo : '', url : '',id : 6}],
+                socialLinks: [...state.socialLinks, {logo: '', url: '', id: 6}],
             }
         default :
             return state

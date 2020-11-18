@@ -1,7 +1,8 @@
 import React from 'react'
-import {API} from "../api/api";
-import {Button} from "reactstrap";
+import {API} from '../api/api'
+import {Button} from 'reactstrap'
 import './FilmCard.scss'
+
 
 const formatedNum = num => {
     // insert 6000000 , output 6 000 000

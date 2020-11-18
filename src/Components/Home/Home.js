@@ -1,26 +1,27 @@
-import React, {useState} from 'react';
-import {Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption, Spinner} from 'reactstrap';
-import "./Home.scss"
-import {NavLink} from "react-router-dom";
-import {API} from "../api/api";
+import React, {useState} from 'react'
+import {Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption} from 'reactstrap'
+import './Home.scss'
+import {NavLink} from 'react-router-dom'
+import {API} from '../api/api'
+
 
 const Home = (props) => {
     const {filmsToSlider} = props
     const [activeIndex, setActiveIndex] = useState(0)
     const [animating, setAnimating] = useState(false)
     const next = () => {
-        if (animating) return;
-        const nextIndex = activeIndex === filmsToSlider.length - 1 ? 0 : activeIndex + 1;
-        setActiveIndex(nextIndex);
+        if (animating) return
+        const nextIndex = activeIndex === filmsToSlider.length - 1 ? 0 : activeIndex + 1
+        setActiveIndex(nextIndex)
     }
     const previous = () => {
-        if (animating) return;
-        const nextIndex = activeIndex === 0 ? filmsToSlider.length - 1 : activeIndex - 1;
-        setActiveIndex(nextIndex);
+        if (animating) return
+        const nextIndex = activeIndex === 0 ? filmsToSlider.length - 1 : activeIndex - 1
+        setActiveIndex(nextIndex)
     }
     const goToIndex = (newIndex) => {
-        if (animating) return;
-        setActiveIndex(newIndex);
+        if (animating) return
+        setActiveIndex(newIndex)
     }
     return (
         <div className="container home">
