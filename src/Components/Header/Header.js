@@ -10,9 +10,7 @@ const Header = props => {
     const inputHandler = e => {
         props.setTextToInput(e.target.value)
     }
-    const buttonHandler = () => {
-        props.clearInputText()
-    }
+
     return (
         <header className="header">
             <div className="container">
@@ -27,7 +25,9 @@ const Header = props => {
                     </div>
                     <div className="">
                         <input className='input' type="text" value={props.inputText} onInput={inputHandler}/>
-                        <Button onClick={buttonHandler} color="warning">Поиск</Button>
+                        <NavLink to={`/search/${props.formatedText}`} >
+                            <Button onClick={props.buttonHandler} color="warning">Поиск</Button>
+                        </NavLink>
                     </div>
 
                     <div className="header__login">

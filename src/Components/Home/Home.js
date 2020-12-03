@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
 import {Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption} from 'reactstrap'
-import './Home.scss'
 import {NavLink} from 'react-router-dom'
-import {API} from '../api/api'
+import './Home.scss'
 
 
 const Home = (props) => {
@@ -42,7 +41,7 @@ const Home = (props) => {
                             key={item.id}
                         >
                             <NavLink to={`/info/${item.id}`}>
-                                <img src={API.getImageFilmURL(item)}
+                                <img src={item.backdrop_path}
                                      className='posters'
                                      alt=''/>
                             </NavLink>

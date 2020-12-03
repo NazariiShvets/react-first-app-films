@@ -1,0 +1,26 @@
+.wrapper-content {
+  border: 2px solid blueviolet;
+  border-radius: 10px;
+  padding-right: 25px;
+  padding-left: 25px;
+  display: flex;
+  align-items: center;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+img .search-img{
+  height: 100%;
+  width: 100%;
+  max-height: 300px;
+  max-width: 133.33px;
+
+}
+.content {
+  padding-left: 50px;
+
+}
+
+.navLink:hover {
+  text-decoration: none;
+}

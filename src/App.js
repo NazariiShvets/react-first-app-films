@@ -6,21 +6,23 @@ import SerialsContainer from './Components/Serials/SerialsContainer'
 import FilmsContainer from './Components/Films/FilmsContainer'
 import FooterContainer from './Components/Footer/FooterContainer'
 import FilmCardContainer from './Components/FilmCard/FilmCardContainer'
-import './App.scss'
 import HeaderContainer from './Components/Header/HeaderContainer'
+import SearchContainer from './Components/Search/SearchContainer'
+import './App.scss'
 
 
 const App = () => {
     return (
         <div className="App">
             <HeaderContainer/>
-            <main className="main-component">
+            <main className="main-component ">
                 <Switch>
                     <Route path='/my_movies' component={MyMovies}/>
                     <Route path='/films' component={FilmsContainer}/>
                     <Route path='/serials' component={SerialsContainer}/>
                     <Route path='/home' exact component={HomeContainer}/>
                     <Route path='/info/:id' component={FilmCardContainer}/>
+                    <Route path='/search/:searchText' component={SearchContainer}/>
                     <Route path='/' exact>
                         <Redirect to='/home'/>
                     </Route>
