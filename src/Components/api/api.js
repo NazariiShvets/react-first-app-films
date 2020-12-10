@@ -2,7 +2,7 @@ import * as axios from 'axios'
 
 
 const API_KEY = process.env.REACT_APP_API_KEY
-// const NO_IMG = 'https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132484032.jpg'
+const NO_IMG = 'https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132484032.jpg'
 const PATH = `https://image.tmdb.org/t/p/w1280`
 
 const instance = axios.create({
@@ -10,8 +10,8 @@ const instance = axios.create({
 })
 
 const getPosterAndImgs = results => results.map(film => {
-    film.poster_path = `${PATH}${film.poster_path}`
-    film.backdrop_path = `${PATH}${film.backdrop_path}`
+    film.poster_path = film.poster_path ? `${PATH}${film.poster_path}` : NO_IMG
+    film.backdrop_path = film.backdrop_path ? `${PATH}${film.backdrop_path}` : NO_IMG
     return film
 })
 
@@ -28,8 +28,7 @@ export const API = {
     getFilmInfo(type = 'tv', id) {
         return instance.get(`${type}/${id}?api_key=${API_KEY}`)
             .then(res => {
-                res.data.poster_path = `${PATH}${res.data.poster_path}`
-                res.data.backdrop_path = `${PATH}${res.data.backdrop_path}`
+                [res.data] = getPosterAndImgs([res.data])
                 return res.data
             })
     },
@@ -69,7 +68,7 @@ export const API = {
                 return res.data
             })
     },
-    searchFilms(text, page = 1) {
+    searchFilms(text = '', page = 1) {
         return instance.get(`search/movie?api_key=${API_KEY}&language=en-US&query=${text}&page=${page}`)
             .then(res => {
                 res.data.results = getPosterAndImgs(res.data.results)

@@ -1,39 +1,66 @@
-import React from 'react'
-import {NavLink} from 'react-router-dom'
-import './Search.scss'
-import {Button} from 'reactstrap'
+import React, {useEffect, useState} from 'react'
+import {compose} from 'redux'
+import {connect} from 'react-redux'
+import {searchFilms, setCurrentPage, setInitialState, setSearchText, toggleBtn} from '../../Redux/searchReducer'
+import {Spinner} from 'reactstrap'
+import SearchResults from './SearchResults'
 
 
-const IMG_HEIGHT = '200'
+const Search = ({searchText, currentPage, setInitialState, searchFilms, ...props}) => {
+    const [inputText, setInputText] = useState('')
 
-const Search = props => {
-    console.log(props)
-    if (!props.films.length) return <div className='container'>Unfortunately no results were found. Change your request
-        and try again</div>
-    return (
-        <div className='container'>
-            {props.films.map((film,id) => (
-                <div key={id} className='container'>
-                    <NavLink  to={`/info/${film.id}`} className='navLink'>
-                        <div className="wrapper-content">
-                            <img src={film.poster_path}
-                                 className='search-img'
-                                 height={IMG_HEIGHT}
-                                 alt={film.original_title}/>
-                            <div className="content">
-                                <div className="film-info__name "><strong>Title</strong> : "{film.name || film.title}"
-                                </div>
-                                <div className="film-info__rating "><strong>Popularity</strong> : {film.popularity}
-                                </div>
-                                <div className="film-info__genres "><strong>Overview</strong> : {film.overview || 'Not enought info'}</div>
-                            </div>
-                        </div>
-                    </NavLink>
-                </div>
-            ))}
-            <Button onClick={props.showMoreButtonHandler}>Show more</Button>
-        </div>
+    const paginationHandler = (e) => {
+        props.setCurrentPage(+e.target.innerText)
+    }
+    const inputHandler = event => {
+        setInputText(event.target.value)
+    }
+    const btnHandler = event => {
+        props.toggleBtn(true)
+        props.setCurrentPage(1)
+        props.setSearchText(inputText)
+    }
+    useEffect(() => () => {
+        setInitialState()
+    }, [setInitialState])
+    useEffect(() => {
+        if (searchText.startsWith(' ')) {
+            console.error('Enter a search again')
+            return
+        }
+        if (searchText) {
+            console.log('Start searching...')
+            searchFilms(searchText, currentPage)
+        }
+
+    }, [searchText, currentPage, searchFilms])
+    return (<>
+            <div className='container mt-3 justify-content-center' style={{display: 'flex'}}>
+                <input type='text' style={{padding: 10}} onChange={inputHandler} value={inputText}/>
+                <button className='btn btn-danger'  style={{paddingLeft: 25,paddingRight: 25, marginLeft : 10}}  onClick={btnHandler}>Искать</button>
+            </div>
+            {props.isBtnPressed ? !props.isShowResults
+                ? <div className={'container'}><Spinner/></div>
+                : <SearchResults currentPage={currentPage}
+                                 paginationHandler={paginationHandler}
+                                 {...props} />
+                : null}
+        </>
     )
 }
 
-export default Search
+const mapStateToProps = state => ({
+    currentPage: state.search.currentPage,
+    isBtnPressed: state.search.isBtnPressed,
+    searchText: state.search.searchText,
+    totalPages: state.search.totalPages,
+    totalResults: state.search.totalResults,
+    searchResults: state.search.searchResults,
+    isFetching: state.search.isFetching,
+    isShowResults: state.search.isShowResults,
+})
+
+
+export default compose(
+    connect(mapStateToProps, {toggleBtn, setSearchText, searchFilms, setInitialState, setCurrentPage})
+)(Search)
