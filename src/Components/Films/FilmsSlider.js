@@ -6,14 +6,15 @@ import './Films.scss'
 
 const IMG_HEIGHT = 130
 
-const FilmsSlider = props => {
-    const films = props.films.map(film => <NavLink key={film.id} to={`/info/${film.id}`}>
-        <img src={film.poster_path} height={IMG_HEIGHT} alt={film.original_title}/>
-    </NavLink>)
-
+const FilmsSlider = ({films, ...props}) => {
+    const filmsToShow = films.map(film =>
+        <NavLink key={film.id} to={`/info/${film.id}`}>
+            <img src={film.poster_path} height={IMG_HEIGHT} alt={film.original_title}/>
+        </NavLink>
+    )
     return (
         <div className="films__row">
-            <div className="films__row--title">{props.films.length ? props.films[0].genre : null}</div>
+            <div className="films__row--title">{films[0].genre}</div>
             <div className="films__row--list">
                 <div className="films__row--film">
                     <Carousel itemsToShow={10}
@@ -22,7 +23,7 @@ const FilmsSlider = props => {
                               enableAutoPlay={false}
                               itemsToScroll={1}
                     >
-                            {films}
+                        {filmsToShow}
                     </Carousel>
                 </div>
             </div>

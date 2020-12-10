@@ -15,65 +15,78 @@ const getPosterAndImgs = results => results.map(film => {
     return film
 })
 
-
 export const API = {
-    getFilms(amount = 20) {
-        return instance.get(`discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&append_to_response=images`)
-            .then(res => {
-                res.data.results = res.data.results.slice(0, amount)
-                res.data.results = getPosterAndImgs(res.data.results)
-                return res.data
-            })
+    async getFilms(amount = 20) {
+        try {
+            const {data} = await instance.get(`discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&append_to_response=images`)
+            data.results = data.results.slice(0, amount)
+            data.results = getPosterAndImgs(data.results)
+            return data
+        } catch (e) {
+            console.error('getFilms Fetch error : ', e)
+        }
     },
-    getFilmInfo(type = 'tv', id) {
-        return instance.get(`${type}/${id}?api_key=${API_KEY}`)
-            .then(res => {
-                [res.data] = getPosterAndImgs([res.data])
-                return res.data
-            })
+    async getFilmInfo(type = 'tv', id) {
+        try {
+            let {data} = await instance.get(`${type}/${id}?api_key=${API_KEY}`);
+            [data] = getPosterAndImgs([data])
+            return data
+        } catch (e) {
+            console.error('getFilmInfo Fetch error : ', e)
+        }
     },
     //Get a list of upcoming movies in theatres. This is a release type query that looks for all movies that have a release type of 2 or 3 within the specified date range.
-    getUpcomingMovies(page = 1) {
-        return instance.get(`movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`)
-            .then(res => {
-                res.data.results = getPosterAndImgs(res.data.results)
-                res.data.results[0].genre = 'Upcoming'
-                return res.data
-            })
+    async getUpcomingMovies(page = 1) {
+        try {
+            const {data} = await instance.get(`movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`)
+            data.results = getPosterAndImgs(data.results)
+            data.results[0].genre = 'Upcoming'
+            return data
+        } catch (e) {
+            console.error('getUpcomingMovies Fetch error : ', e)
+        }
     },
     //Get the top rated movies on TMDb.
-    getTopRatedMovies(page = 1) {
-        return instance.get(`movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`)
-            .then(res => {
-                res.data.results = getPosterAndImgs(res.data.results)
-                res.data.results[0].genre = 'Top Rated'
-                return res.data
-            })
+    async getTopRatedMovies(page = 1) {
+        try {
+            const {data} = await instance.get(`movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`)
+            data.results = getPosterAndImgs(data.results)
+            data.results[0].genre = 'Top Rated'
+            return data
+        } catch (e) {
+            console.error('getTopRatedMovies Fetch error : ', e)
+        }
     },
     //Get a list of the current popular movies on TMDb. This list updates daily.
-    getPopularMovies(page = 1) {
-        return instance.get(`movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`)
-            .then(res => {
-                res.data.results = getPosterAndImgs(res.data.results)
-                res.data.results[0].genre = 'Popular'
-                return res.data
-            })
+    async getPopularMovies(page = 1) {
+        try {
+            const {data} = await instance.get(`movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`)
+            data.results = getPosterAndImgs(data.results)
+            data.results[0].genre = 'Popular'
+            return data
+        } catch (e) {
+            console.error('getPopularMovies Fetch error : ', e)
+        }
     },
     //Get a list of movies in theatres. This is a release type query that looks for all movies that have a release type of 2 or 3 within the specified date range.
-    getNowPlayingMovies(page = 1) {
-        return instance.get(`movie/now_playing?api_key=${API_KEY}&language=en-US&page=${page}`)
-            .then(res => {
-                res.data.results = getPosterAndImgs(res.data.results)
-                res.data.results[0].genre = 'Now Playing'
-                return res.data
-            })
+    async getNowPlayingMovies(page = 1) {
+        try {
+            const {data} = await instance.get(`movie/now_playing?api_key=${API_KEY}&language=en-US&page=${page}`)
+            data.results = getPosterAndImgs(data.results)
+            data.results[0].genre = 'Now Playing'
+            return data
+        } catch (e) {
+            console.error('getNowPlayingMovies Fetch error : ', e)
+        }
     },
-    searchFilms(text = '', page = 1) {
-        return instance.get(`search/movie?api_key=${API_KEY}&language=en-US&query=${text}&page=${page}`)
-            .then(res => {
-                res.data.results = getPosterAndImgs(res.data.results)
-                return res.data
-            })
-    }
+    async searchFilms(text = '', page = 1) {
+        try {
+            const {data} = await instance.get(`search/movie?api_key=${API_KEY}&language=en-US&query=${text}&page=${page}`)
+            data.results = getPosterAndImgs(data.results)
+            return data
+        } catch (e) {
+            console.error('searchFilms Fetch error : ', e)
+        }
+    },
 }
 

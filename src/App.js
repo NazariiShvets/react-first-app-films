@@ -1,14 +1,14 @@
 import React from 'react'
 import {Redirect, Route, Switch} from 'react-router-dom'
 import MyMovies from './Components/MyMovies/MyMovies'
-import HomeContainer from './Components/Home/HomeContainer'
+import HomeContainer from './Components/Home/Home'
 import SerialsContainer from './Components/Serials/SerialsContainer'
-import FilmsContainer from './Components/Films/FilmsContainer'
+import FilmsContainer from './Components/Films/Films'
 import FooterContainer from './Components/Footer/FooterContainer'
 import FilmCardContainer from './Components/FilmCard/FilmCardContainer'
 import Header from './Components/Header/Header'
-import './App.scss'
 import Search from './Components/Search/Search'
+import './App.scss'
 
 
 const App = () => {
@@ -22,7 +22,7 @@ const App = () => {
                     <Route path='/serials' component={SerialsContainer}/>
                     <Route path='/home' component={HomeContainer}/>
                     <Route path='/info/:id' component={FilmCardContainer}/>
-                    <Route path='/search'  component={Search}/>
+                    <Route path='/search' component={Search}/>
                     <Route path='/' exact>
                         <Redirect to='/home'/>
                     </Route>

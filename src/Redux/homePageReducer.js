@@ -1,3 +1,6 @@
+import {API} from '../Components/api/api'
+
+
 const SET_FILMS_TO_SLIDER = 'SET_FILMS_TO_SLIDER'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 
@@ -25,7 +28,14 @@ const homePageReducer = (state = initialState, action) => {
 }
 
 
+const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export const setFilmsToSlider = (filmsToSlider) => ({type: SET_FILMS_TO_SLIDER, filmsToSlider})
-export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
+
+export const getFilms = (amount) => async dispatch => {
+    dispatch(toggleIsFetching(true))
+    const {results} = await API.getFilms(amount)
+    dispatch(setFilmsToSlider(results))
+    dispatch(toggleIsFetching(false))
+}
 
 export default homePageReducer
