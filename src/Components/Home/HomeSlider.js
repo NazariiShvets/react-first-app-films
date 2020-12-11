@@ -22,7 +22,7 @@ const HomeSlider = ({filmsToSlider, ...props}) => {
         setActiveIndex(newIndex)
     }
     return (
-        <div className="container home">
+        <section className="container home">
             <Carousel
                 activeIndex={activeIndex}
                 next={next}
@@ -53,7 +53,7 @@ const HomeSlider = ({filmsToSlider, ...props}) => {
                 <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous}/>
                 <CarouselControl direction="next" directionText="Next" onClickHandler={next}/>
             </Carousel>
-        </div>
+        </section>
     )
 }
 

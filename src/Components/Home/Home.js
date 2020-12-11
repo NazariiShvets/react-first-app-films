@@ -1,41 +1,32 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import HomeSlider from './HomeSlider'
-import {getFilms, setFilmsToSlider} from '../../Redux/homePageReducer'
+import {getFilms, setInitialStateToHome} from '../../Redux/homePageReducer'
 import {Spinner} from 'reactstrap'
 
 
-const mapStateToProps = state => {
-    return {
-        filmsToSlider: state.homePage.filmsToSlider,
-        isFetching: state.homePage.isFetching,
-    }
-}
+const mapStateToProps = state => ({
+    filmsToSlider: state.homePage.filmsToSlider,
+    isFetching: state.homePage.isFetching,
+})
 
-const Home = ({isFetching, setFilmsToSlider, filmsToSlider, getFilms, ...props}) => {
+const Home = ({isFetching, setInitialStateToHome, filmsToSlider, getFilms, ...props}) => {
     const FETCH_FILMS_COUNT = 20
     useEffect(() => {
-        console.log('DidMount')
         getFilms(FETCH_FILMS_COUNT)
-
-    }, [])
-    useEffect(() => () => {
-        console.log('DidUnmount')
-        setFilmsToSlider([])
-    },[])
+        return () => {
+            setInitialStateToHome()
+        }
+    }, [FETCH_FILMS_COUNT])
 
     if (isFetching) {
         return <div className="container"><Spinner color='danger'/></div>
     }
 
-    return (
-        <>
-            <HomeSlider filmsToSlider={filmsToSlider}/>
-        </>
-    )
+    return <HomeSlider filmsToSlider={filmsToSlider}/>
 }
 
 
 export default connect(mapStateToProps, {
-    getFilms, setFilmsToSlider
+    getFilms, setInitialStateToHome
 })(Home)

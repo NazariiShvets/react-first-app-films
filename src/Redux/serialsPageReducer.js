@@ -8,10 +8,7 @@ const initialState = {
 const serialsPageReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_SERIALS :
-            return {
-                ...state,
-                serials: [...state.serials, ...action.serials]
-            }
+            return {...state, serials: [...state.serials, ...action.serials]}
         default :
             return state
     }

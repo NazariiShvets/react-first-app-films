@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {Spinner} from 'reactstrap'
 import FilmsSlider from './FilmsSlider'
-import {getAllFilmsToSliders, setFilmsToAllSliders} from '../../Redux/filmsPageReducer'
+import {getAllFilmsToSliders, setInitialStateToFilms} from '../../Redux/filmsPageReducer'
 import './Films.scss'
 
 
@@ -14,9 +14,12 @@ const mapStateToProps = state => ({
     isFetching: state.filmsPage.isFetching
 })
 
-const Films = ({isFetching, getAllFilmsToSliders, setFilmsToAllSliders, ...props}) => {
+const Films = ({isFetching, getAllFilmsToSliders, setInitialStateToFilms, ...props}) => {
     useEffect(() => {
         getAllFilmsToSliders()
+        return () => {
+            setInitialStateToFilms()
+        }
     }, [])
     if (isFetching) {
         return <div className="container"><Spinner color='danger'/></div>
@@ -31,4 +34,4 @@ const Films = ({isFetching, getAllFilmsToSliders, setFilmsToAllSliders, ...props
     )
 }
 
-export default connect(mapStateToProps, {getAllFilmsToSliders, setFilmsToAllSliders})(Films)
+export default connect(mapStateToProps, {getAllFilmsToSliders, setInitialStateToFilms})(Films)

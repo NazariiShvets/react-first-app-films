@@ -33,10 +33,7 @@ const initialState = {
 const footerReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD-SOCIAL-LINK' :
-            return {
-                ...state,
-                socialLinks: [...state.socialLinks, {logo: '', url: '', id: 6}],
-            }
+            return {...state, socialLinks: [...state.socialLinks, {logo: '', url: '', id: 6}],}
         default :
             return state
     }
