@@ -31,24 +31,21 @@ const HomeSlider = ({filmsToSlider, ...props}) => {
                 <CarouselIndicators items={filmsToSlider}
                                     activeIndex={activeIndex}
                                     onClickHandler={goToIndex}/>
-                {filmsToSlider.map(item => {
-                    return (
-                        <CarouselItem
-                            className='custom-carousel'
-                            onExiting={() => setAnimating(true)}
-                            onExited={() => setAnimating(false)}
-                            key={item.id}
-                        >
-                            <NavLink to={`/info/${item.id}`}>
-                                <img src={item.backdrop_path}
-                                     className='posters'
-                                     alt=''/>
-                            </NavLink>
+                {filmsToSlider.map(item => (
+                    <CarouselItem
+                        className='custom-carousel'
+                        onExiting={() => setAnimating(true)}
+                        onExited={() => setAnimating(false)}
+                        key={item.id}
+                    >
+                        <NavLink to={`/info/${item.id}`}>
+                            <img src={item.backdrop_path}
+                                 className='posters'
+                                 alt=''/>
+                        </NavLink>
 
-                            <CarouselCaption style={{color: 'red'}} captionText={''} captionHeader={item.title}/>
-                        </CarouselItem>
-                    )
-                })
+                        <CarouselCaption style={{color: 'red'}} captionText={''} captionHeader={item.title}/>
+                    </CarouselItem>))
                 }
                 <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous}/>
                 <CarouselControl direction="next" directionText="Next" onClickHandler={next}/>

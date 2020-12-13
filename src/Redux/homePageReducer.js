@@ -1,4 +1,4 @@
-import {API} from '../Components/api/api'
+import {filmAPI} from '../api/filmAPI'
 
 
 const SET_FILMS_TO_SLIDER = 'SET_FILMS_TO_SLIDER'
@@ -31,7 +31,7 @@ const setFilmsToSlider = (filmsToSlider) => ({type: SET_FILMS_TO_SLIDER, filmsTo
 export const setInitialStateToHome = () => ({type: SET_INITIAL_STATE_TO_HOME})
 export const getFilms = (amount) => async dispatch => {
     dispatch(toggleIsFetching(true))
-    const {results} = await API.getFilms(amount)
+    const {results} = await filmAPI.getFilms(amount)
     dispatch(setFilmsToSlider(results))
     dispatch(toggleIsFetching(false))
 }

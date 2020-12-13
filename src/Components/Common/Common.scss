@@ -1,0 +1,10 @@
+.nav__link {
+  &:visited {
+    color: white;
+  }
+
+  &:hover {
+    color: aqua;
+    text-decoration: none;
+  }
+}

@@ -1,4 +1,4 @@
-import {API} from '../Components/api/api'
+import {filmAPI} from '../api/filmAPI'
 
 
 const TOGGLE_SEARCH_BTN = 'TOGGLE_SEARCH_BTN'
@@ -55,7 +55,7 @@ const setSearchResults = searchResults => ({type: SET_SEARCH_RESULTS, searchResu
 
 export const searchFilms = (inputText, page) => async dispatch => {
     dispatch(toggleIsFetching(true))
-    const response = await API.searchFilms(inputText, page)
+    const response = await filmAPI.searchFilms(inputText, page)
     dispatch(setTotalResults(response.total_results))
     dispatch(setTotalPages(response.total_pages))
     dispatch(setSearchResults(response.results))

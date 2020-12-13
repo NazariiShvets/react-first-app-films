@@ -4,6 +4,7 @@ import {Spinner} from 'reactstrap'
 import FilmsSlider from './FilmsSlider'
 import {getAllFilmsToSliders, setInitialStateToFilms} from '../../Redux/filmsPageReducer'
 import './Films.scss'
+import {Container} from '@material-ui/core'
 
 
 const mapStateToProps = state => ({
@@ -25,12 +26,12 @@ const Films = ({isFetching, getAllFilmsToSliders, setInitialStateToFilms, ...pro
         return <div className="container"><Spinner color='danger'/></div>
     }
     return (
-        <div className='container'>
+        <Container>
             <FilmsSlider films={props.filmsNowPlayingToSlider}/>
             <FilmsSlider films={props.filmsPopularToSlider}/>
             <FilmsSlider films={props.filmsTopRatedToSlider}/>
             <FilmsSlider films={props.filmsUpcomingToSlider}/>
-        </div>
+        </Container>
     )
 }
 

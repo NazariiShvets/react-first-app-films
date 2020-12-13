@@ -15,18 +15,14 @@ const FilmsSlider = ({films, ...props}) => {
     return (
         <div className="films__row">
             <div className="films__row--title">{films[0].genre}</div>
-            <div className="films__row--list">
-                <div className="films__row--film">
-                    <Carousel itemsToShow={10}
-                              pagination={false}
-                              enableSwipe={false}
-                              enableAutoPlay={false}
-                              itemsToScroll={1}
-                    >
-                        {filmsToShow}
-                    </Carousel>
-                </div>
-            </div>
+            <Carousel itemsToShow={10}
+                      pagination={false}
+                      enableSwipe={false}
+                      enableAutoPlay={false}
+                      itemsToScroll={1}
+            >
+                {filmsToShow}
+            </Carousel>
         </div>
     )
 }

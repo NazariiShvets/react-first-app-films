@@ -32,12 +32,13 @@ const Search = ({searchText, currentPage, setInitialState, searchFilms, ...props
             console.log('Start searching...')
             searchFilms(searchText, currentPage)
         }
-
     }, [searchText, currentPage, searchFilms])
     return (<>
             <div className='container mt-3 justify-content-center' style={{display: 'flex'}}>
                 <input type='text' style={{padding: 10}} onChange={inputHandler} value={inputText}/>
-                <button className='btn btn-danger'  style={{paddingLeft: 25,paddingRight: 25, marginLeft : 10}}  onClick={btnHandler}>Искать</button>
+                <button className='btn btn-danger' style={{paddingLeft: 25, paddingRight: 25, marginLeft: 10}}
+                        onClick={btnHandler}>Искать
+                </button>
             </div>
             {props.isBtnPressed ? !props.isShowResults
                 ? <div className={'container'}><Spinner/></div>

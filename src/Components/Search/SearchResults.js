@@ -9,7 +9,7 @@ const SearchResults = props => {
         <div className='container '>
             <span>Found {props.totalResults} results. Show {props.searchResults.length} on page {props.currentPage} . Total pages {props.totalPages}</span>
             <SearchPagination {...props} />
-            <div>{props.searchResults.map(film =>
+            {props.searchResults.map(film =>
                 <div className='wrapper-content' key={film.id}>
                     <div>
                         <NavLink to={`/info/${film.id}`}>
@@ -23,7 +23,7 @@ const SearchResults = props => {
                         <NavLink to={`/info/${film.id}`} className='btn btn-light'>See details</NavLink>
                     </div>
                 </div>)
-            }</div>
+            }
         </div>)
 }
 

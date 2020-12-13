@@ -1,4 +1,4 @@
-import {API} from '../Components/api/api'
+import {filmAPI} from '../api/filmAPI'
 
 
 const SET_FILM = 'SET_FILM'
@@ -29,7 +29,7 @@ const setFilm = film => ({type: SET_FILM, film})
 export const setInitialStateToFilmCard = () => ({type: SET_INITIAL_STATE_TO_FILM_CARD})
 export const getFilmInfo = (id, type = 'movie') => async dispatch => {
     dispatch(toggleIsFetching(true))
-    const response = await API.getFilmInfo(type, id)
+    const response = await filmAPI.getFilmInfo(type, id)
     dispatch(setFilm(response))
     dispatch(toggleIsFetching(false))
 }

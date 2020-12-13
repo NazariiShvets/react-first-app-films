@@ -1,8 +1,10 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
-import {getFilmInfo, setInitialStateToFilmCard} from '../../Redux/filmCardReducer'
-import {Button, Spinner} from 'reactstrap'
+import {Spinner} from 'reactstrap'
 import './FilmCard.scss'
+import Container from '@material-ui/core/Container'
+import {getFilmInfo, setInitialStateToFilmCard} from '../../Redux/filmCardReducer'
+import {Button} from '@material-ui/core'
 
 
 const IMG_HEIGHT = 500
@@ -29,37 +31,34 @@ const FilmCard = ({getFilmInfo, setInitialStateToFilmCard, isFetching, film, ...
         }
     }, [props.match.params.id])
     if (isFetching) {
-        return <div className='container'><Spinner color="danger"/></div>
+        return <Container><Spinner color="danger"/></Container>
     }
     const genres = film.genres.map(genre => genre.name).join(', ')
     const realeaseFormatedDate = film.release_date.split('-').reverse().join(' / ')
+
     return (
-        <div className='container'>
+        <Container>
             <div className='film'>
-                <img src={film.poster_path} height={IMG_HEIGHT} alt=""/>
+                <div><img src={film.poster_path} height={IMG_HEIGHT} alt=""/></div>
                 <div className="film-info">
-                    <div className="film-info__name "><strong>Title</strong> : "{film.name || film.title}"</div>
-                    <div className="film-info__name "><strong>Original Title</strong> :
-                        "{film.name || film.original_title}"
+                    <div><strong>Title</strong> : "{film.name || film.title}"</div>
+                    <div><strong>Original Title</strong> : "{film.name || film.original_title}"</div>
+                    <div><strong>Popularity</strong> : {film.popularity}</div>
+                    <div><strong>Realease date</strong> : {realeaseFormatedDate}</div>
+                    <div><strong>Genres</strong> : {genres}</div>
+                    <div><strong>Budget</strong> : {numOrNotEnought(film.budget)}</div>
+                    <div><strong>Revenue</strong> : {numOrNotEnought(film.revenue)}</div>
+                    <div><strong>Overview</strong> : {film.overview || 'Not enought info'}</div>
+                    <div>
+                        <Button color='secondary' size='large'
+                                variant='contained' style={{backgroundColor: '#db2428'}}
+                        >Add to My Collection</Button>
                     </div>
-                    <div className="film-info__rating "><strong>Popularity</strong> : {film.popularity}</div>
-                    <div className="film-info__release-date "><strong>Realease
-                        date</strong> : {realeaseFormatedDate}</div>
-                    <div className="film-info__genres "><strong>Genres</strong> : {genres}</div>
-                    <div className="film-info__budget "><strong>Budget</strong> : {numOrNotEnought(film.budget)}
-                    </div>
-                    <div className="film-info__revenue"><strong>Revenue</strong> : {numOrNotEnought(film.revenue)}
-                    </div>
-                    <div className="film-info__genres ">
-                        <strong>Overview</strong> : {film.overview || 'Not enought info'}
-                    </div>
-                    <Button>Give more details...</Button>
                 </div>
             </div>
-        </div>
+        </Container>
     )
 }
-
 
 export default connect(mapStateToProps, {
     setInitialStateToFilmCard, getFilmInfo,

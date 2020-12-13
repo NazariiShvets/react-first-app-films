@@ -1,19 +1,12 @@
-@import "_null.scss";
+@import '_null.scss';
 
-.container{
-  margin: 0 auto;
-  max-width: 900px;
-}
 .App {
-  color : white;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-.main-component {
+  min-height: 100vh;
   background-color: #1a143b;
-  width: 100%;
-  min-height: 80vh;
 }
 
 

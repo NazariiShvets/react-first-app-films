@@ -15,7 +15,7 @@ const getPosterAndImgs = results => results.map(film => {
     return film
 })
 
-export const API = {
+export const filmAPI = {
     async getFilms(amount = 20) {
         try {
             const {data} = await instance.get(`discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false&append_to_response=images`)

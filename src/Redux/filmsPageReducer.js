@@ -1,4 +1,4 @@
-import {API} from '../Components/api/api'
+import {filmAPI} from '../api/filmAPI'
 
 
 const SET_NOW_PLAYING_FILMS_TO_SLIDER = 'SET_NOW_PLAYING_FILMS_TO_SLIDER'
@@ -58,13 +58,13 @@ export const setInitialStateToFilms = () => ({type: SET_INITIAL_STATE_TO_FILMS})
 
 export const getAllFilmsToSliders = (page = 1) => async dispatch => {
     dispatch(toggleIsFetching(true))
-    const getNPMres = await API.getNowPlayingMovies(page)
+    const getNPMres = await filmAPI.getNowPlayingMovies(page)
     dispatch(setNowPlayingFilmToSlider(getNPMres.results))
-    const getPMres = await API.getPopularMovies(page)
+    const getPMres = await filmAPI.getPopularMovies(page)
     dispatch(setPopularFilmToSlider(getPMres.results))
-    const getTRMres = await API.getTopRatedMovies(page)
+    const getTRMres = await filmAPI.getTopRatedMovies(page)
     dispatch(setTopRatedFilmToSlider(getTRMres.results))
-    const getUMres = await API.getUpcomingMovies(page)
+    const getUMres = await filmAPI.getUpcomingMovies(page)
     dispatch(setUpcomingFilmToSlider(getUMres.results))
     dispatch(toggleIsFetching(false))
 }
