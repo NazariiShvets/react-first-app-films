@@ -3,7 +3,6 @@ import {REMOVE_FILM_FROM_COLLECTION, SET_FILM_IN_COLLECTION,} from './Constants'
 
 const initialState = {
     filmsInCollection: [],
-    isFilmInCollection: false,
 }
 
 const myCollectionReducer = (state = initialState, {type, payload}) => {

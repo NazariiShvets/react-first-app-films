@@ -1,5 +1,6 @@
 .nav__link {
   color: white;
+
   &:visited {
     color: white;
   }
@@ -8,4 +9,11 @@
     color: aqua;
     text-decoration: none;
   }
+}
+
+.flex-center-center-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
