@@ -1,12 +1,12 @@
 import {filmAPI} from '../api/filmAPI'
+import {
+    SET_INITIAL_STATE_TO_FILMS,
+    SET_NOW_PLAYING_FILMS_TO_SLIDER,
+    SET_POPULAR_FILMS_TO_SLIDER,
+    SET_TOP_RATED_FILMS_TO_SLIDER,
+    SET_UPCOMING_FILMS_TO_SLIDER, TOGGLE_FILMS_IS_FETCHING
+} from './Constants'
 
-
-const SET_NOW_PLAYING_FILMS_TO_SLIDER = 'SET_NOW_PLAYING_FILMS_TO_SLIDER'
-const SET_POPULAR_FILMS_TO_SLIDER = 'SET_POPULAR_FILMS_TO_SLIDER'
-const SET_TOP_RATED_FILMS_TO_SLIDER = 'SET_TOP_RATED_FILMS_TO_SLIDER'
-const SET_UPCOMING_FILMS_TO_SLIDER = 'SET_UPCOMING_FILMS_TO_SLIDER'
-const TOGGLE_FILMS_IS_FETCHING = 'TOGGLE_FILMS_IS_FETCHING'
-const SET_INITIAL_STATE_TO_FILMS = 'SET_INITIAL_STATE_TO_FILMS'
 
 const initialState = {
     filmsNowPlayingToSlider: [],
@@ -26,7 +26,6 @@ const filmsPageReducer = (state = initialState, action = {}) => {
         case SET_POPULAR_FILMS_TO_SLIDER :
             return {...state, filmsPopularToSlider: action.filmsPopularToSlider}
         case TOGGLE_FILMS_IS_FETCHING :
-            debugger
             return {...state, isFetching: action.isFetching}
         case SET_INITIAL_STATE_TO_FILMS:
             return {...initialState}
@@ -36,7 +35,6 @@ const filmsPageReducer = (state = initialState, action = {}) => {
 }
 
 const toggleIsFetching = (isFetching) => ({type: TOGGLE_FILMS_IS_FETCHING, isFetching})
-
 
 export const setNowPlayingFilmToSlider = (filmsNowPlayingToSlider) => ({
     type: SET_NOW_PLAYING_FILMS_TO_SLIDER,

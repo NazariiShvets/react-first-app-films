@@ -6,6 +6,8 @@ import filmsPageReducer from './filmsPageReducer'
 import serialsPageReducer from './serialsPageReducer'
 import filmCardReducer from './filmCardReducer'
 import searchReducer from './searchReducer'
+import myCollectionReducer from './myCollectionReducer'
+
 
 let reducers = combineReducers({
     homePage: homePageReducer,
@@ -14,6 +16,7 @@ let reducers = combineReducers({
     filmCard: filmCardReducer,
     footer: footerReducer,
     search: searchReducer,
+    myCollection: myCollectionReducer,
 })
 
 

@@ -1,4 +1,5 @@
-const SET_SERIALS = 'SET_SERIALS'
+import {SET_SERIALS} from './Constants'
+
 
 const initialState = {
     serials: []

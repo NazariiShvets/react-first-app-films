@@ -1,15 +1,11 @@
 import {filmAPI} from '../api/filmAPI'
+import {SET_FILMS_TO_SLIDER, SET_INITIAL_STATE_TO_HOME, TOGGLE_HOME_IS_FETCHING} from './Constants'
 
-
-const SET_FILMS_TO_SLIDER = 'SET_FILMS_TO_SLIDER'
-const TOGGLE_HOME_IS_FETCHING = 'TOGGLE_HOME_IS_FETCHING'
-const SET_INITIAL_STATE_TO_HOME = 'SET_INITIAL_STATE_TO_HOME'
 
 const initialState = {
     filmsToSlider: [],
     isFetching: true,
 }
-
 
 const homePageReducer = (state = initialState, action) => {
     switch (action.type) {

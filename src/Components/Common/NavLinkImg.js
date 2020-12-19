@@ -4,9 +4,9 @@ import {Button} from '@material-ui/core'
 
 
 export const NavLinkImg = ({to, src, className, alt, height}) => (
-    <Button>
-        <NavLink to={to}>
+    <NavLink to={to}>
+        <Button>
             <img src={src} height={height} alt={alt} className={className}/>
-        </NavLink>
-    </Button>
+        </Button>
+    </NavLink>
 )

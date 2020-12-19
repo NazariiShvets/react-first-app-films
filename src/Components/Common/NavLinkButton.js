@@ -5,11 +5,11 @@ import './Common.scss'
 
 
 export const NavLinkButton = ({to, text, variant, children}) => (
-    <Button>
-        <NavLink to={to} className='nav__link'>
-            <Typography variant={variant}>
+    <NavLink to={to}>
+        <Button>
+            <Typography className='nav__link' variant={variant}>
                 {children || text}
             </Typography>
-        </NavLink>
-    </Button>
+        </Button>
+    </NavLink>
 )
