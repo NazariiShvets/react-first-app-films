@@ -25,11 +25,9 @@ const Search = ({searchText, currentPage, setInitialState, searchFilms, ...props
     }, [setInitialState])
     useEffect(() => {
         if (searchText.startsWith(' ')) {
-            console.error('Enter a search again')
             return
         }
         if (searchText) {
-            console.log('Start searching...')
             searchFilms(searchText, currentPage)
         }
     }, [searchText, currentPage, searchFilms])

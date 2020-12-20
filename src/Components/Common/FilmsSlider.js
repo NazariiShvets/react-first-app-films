@@ -1,7 +1,7 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 import Carousel from 'react-elastic-carousel'
-import './Films.scss'
+import '../Films/Films.scss'
 
 
 const IMG_HEIGHT = 130

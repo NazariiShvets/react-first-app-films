@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {Spinner} from 'reactstrap'
-import FilmsSlider from './FilmsSlider'
+import FilmsSlider from '../Common/FilmsSlider'
 import {getAllFilmsToSliders, setInitialStateToFilms} from '../../Redux/filmsPageReducer'
 import './Films.scss'
 import {Container} from '@material-ui/core'
