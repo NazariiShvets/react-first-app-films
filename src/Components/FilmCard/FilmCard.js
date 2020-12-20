@@ -2,15 +2,14 @@ import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {Spinner} from 'reactstrap'
 import Container from '@material-ui/core/Container'
-import {getFilmInfo, setInitialStateToFilmCard, toggleIsFilmInCollection} from '../../Redux/filmCardReducer'
 import {Button} from '@material-ui/core'
+import {getFilmInfo, setInitialStateToFilmCard, toggleIsFilmInCollection} from '../../Redux/filmCardReducer'
 import FilmCardAbout from './FilmCardAbout'
-import './FilmCard.scss'
 import {removeFilmFromCollection, setFilmToCollection} from '../../Redux/myCollectionReducer'
+import './FilmCard.scss'
 
 
 const IMG_HEIGHT = 500
-
 
 const mapStateToProps = state => ({
     film: state.filmCard.film,

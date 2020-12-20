@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {Spinner} from 'reactstrap'
+import {Container} from '@material-ui/core'
 import FilmsSlider from '../Common/FilmsSlider'
 import {getAllFilmsToSliders, setInitialStateToFilms} from '../../Redux/filmsPageReducer'
-import './Films.scss'
-import {Container} from '@material-ui/core'
 
 
 const mapStateToProps = state => ({
@@ -17,7 +16,7 @@ const mapStateToProps = state => ({
 
 const Films = ({isFetching, getAllFilmsToSliders, setInitialStateToFilms, ...props}) => {
     useEffect(() => {
-        getAllFilmsToSliders()
+        getAllFilmsToSliders(1)
         return () => {
             setInitialStateToFilms()
         }

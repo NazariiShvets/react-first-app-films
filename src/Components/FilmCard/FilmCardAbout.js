@@ -10,19 +10,18 @@ const numOrNotEnough = num => {
 }
 
 const FilmCardAbout = ({film}) => {
-
     const genres = film.genres.map(genre => genre.name).join(', ')
     const realeaseFormatedDate = film.release_date.split('-').reverse().join(' / ')
+
     return (<>
-            <div><strong>Title</strong> : "{film.name || film.title}"</div>
-            <div><strong>Original Title</strong> : "{film.name || film.original_title}"</div>
-            <div><strong>Popularity</strong> : {film.popularity}</div>
-            <div><strong>Realease date</strong> : {realeaseFormatedDate}</div>
-            <div><strong>Genres</strong> : {genres || 'Not enough data'}</div>
-            <div><strong>Budget</strong> : {numOrNotEnough(film.budget)}</div>
-            <div><strong>Revenue</strong> : {numOrNotEnough(film.revenue)}</div>
-            <div><strong>Overview</strong> : {film.overview || 'Not enough info'}</div>
-        </>
-    )
+        <div><strong>Title</strong> : "{film.title || film.name}"</div>
+        <div><strong>Original Title</strong> : "{film.original_title || film.name}"</div>
+        <div><strong>Popularity</strong> : {film.popularity}</div>
+        <div><strong>Realease date</strong> : {realeaseFormatedDate}</div>
+        <div><strong>Genres</strong> : {genres || 'Not enough data'}</div>
+        <div><strong>Budget</strong> : {numOrNotEnough(film.budget)}</div>
+        <div><strong>Revenue</strong> : {numOrNotEnough(film.revenue)}</div>
+        <div><strong>Overview</strong> : {film.overview || 'Not enough info'}</div>
+    </>)
 }
 export default FilmCardAbout

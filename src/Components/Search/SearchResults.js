@@ -9,6 +9,7 @@ const SearchResults = ({...props}) => (
         <span>Found {props.totalResults} results. Show {props.searchResults.length} on page {props.currentPage} . Total pages {props.totalPages}</span>
         <SearchPagination {...props} />
         <FilmItems films={props.searchResults}/>
+        <SearchPagination {...props} />
     </div>
 )
 

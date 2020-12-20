@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import {Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption} from 'reactstrap'
 import {NavLink} from 'react-router-dom'
+import {Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption} from 'reactstrap'
 import './Home.scss'
 
 
@@ -17,36 +17,24 @@ const HomeSlider = ({filmsToSlider, ...props}) => {
         const nextIndex = activeIndex === 0 ? filmsToSlider.length - 1 : activeIndex - 1
         setActiveIndex(nextIndex)
     }
-    const goToIndex = (newIndex) => {
+    const goToIndex = newIndex => {
         if (animating) return
         setActiveIndex(newIndex)
     }
     return (
         <section className="container home">
-            <Carousel
-                activeIndex={activeIndex}
-                next={next}
-                previous={previous}
-            >
-                <CarouselIndicators items={filmsToSlider}
-                                    activeIndex={activeIndex}
-                                    onClickHandler={goToIndex}/>
+            <Carousel activeIndex={activeIndex} next={next} previous={previous}>
+                <CarouselIndicators items={filmsToSlider} activeIndex={activeIndex} onClickHandler={goToIndex}/>
                 {filmsToSlider.map(item => (
-                    <CarouselItem
-                        className='custom-carousel'
-                        onExiting={() => setAnimating(true)}
-                        onExited={() => setAnimating(false)}
-                        key={item.id}
+                    <CarouselItem className='custom-carousel' key={item.id}
+                                  onExiting={() => setAnimating(true)}
+                                  onExited={() => setAnimating(false)}
                     >
                         <NavLink to={`/info/${item.id}`}>
-                            <img src={item.backdrop_path}
-                                 className='posters'
-                                 alt=''/>
+                            <img src={item.backdrop_path} className='posters' alt=''/>
                         </NavLink>
-
                         <CarouselCaption style={{color: 'red'}} captionText={''} captionHeader={item.title}/>
-                    </CarouselItem>))
-                }
+                    </CarouselItem>))}
                 <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous}/>
                 <CarouselControl direction="next" directionText="Next" onClickHandler={next}/>
             </Carousel>

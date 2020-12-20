@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
-import {getTvs, setInitialStateToSerials} from '../../Redux/serialsPageReducer'
 import {Spinner} from 'reactstrap'
-import FilmsSlider from '../Common/FilmsSlider'
 import {Container} from '@material-ui/core'
+import FilmsSlider from '../Common/FilmsSlider'
+import {getTvs, setInitialStateToSerials} from '../../Redux/serialsPageReducer'
 
 
 const mapStateToProps = state => ({
@@ -21,6 +21,8 @@ const Serials = ({setInitialStateToSerials, getTvs, ...props}) => {
             setInitialStateToSerials()
         }
     }, [])
+
+
     if (props.isFetching) {
         return <div className='container'><Spinner/></div>
     }

@@ -15,18 +15,18 @@ const initialState = {
     filmsUpcomingToSlider: [],
     isFetching: true,
 }
-const filmsPageReducer = (state = initialState, action = {}) => {
-    switch (action.type) {
+const filmsPageReducer = (state = initialState, {type, payload}) => {
+    switch (type) {
         case SET_NOW_PLAYING_FILMS_TO_SLIDER :
-            return {...state, filmsNowPlayingToSlider: action.filmsNowPlayingToSlider}
+            return {...state, filmsNowPlayingToSlider: payload}
         case SET_TOP_RATED_FILMS_TO_SLIDER :
-            return {...state, filmsTopRatedToSlider: action.filmsTopRatedToSlider}
+            return {...state, filmsTopRatedToSlider: payload}
         case SET_UPCOMING_FILMS_TO_SLIDER :
-            return {...state, filmsUpcomingToSlider: action.filmsUpcomingToSlider}
+            return {...state, filmsUpcomingToSlider: payload}
         case SET_POPULAR_FILMS_TO_SLIDER :
-            return {...state, filmsPopularToSlider: action.filmsPopularToSlider}
+            return {...state, filmsPopularToSlider: payload}
         case TOGGLE_FILMS_IS_FETCHING :
-            return {...state, isFetching: action.isFetching}
+            return {...state, isFetching: payload}
         case SET_INITIAL_STATE_TO_FILMS:
             return {...initialState}
         default :
@@ -34,35 +34,23 @@ const filmsPageReducer = (state = initialState, action = {}) => {
     }
 }
 
-const toggleIsFetching = (isFetching) => ({type: TOGGLE_FILMS_IS_FETCHING, isFetching})
+const toggleIsFetching = bool => ({type: TOGGLE_FILMS_IS_FETCHING, payload: bool})
 
-export const setNowPlayingFilmToSlider = (filmsNowPlayingToSlider) => ({
-    type: SET_NOW_PLAYING_FILMS_TO_SLIDER,
-    filmsNowPlayingToSlider
-})
-export const setUpcomingFilmToSlider = (filmsUpcomingToSlider) => ({
-    type: SET_UPCOMING_FILMS_TO_SLIDER,
-    filmsUpcomingToSlider
-})
-export const setTopRatedFilmToSlider = (filmsTopRatedToSlider) => ({
-    type: SET_TOP_RATED_FILMS_TO_SLIDER,
-    filmsTopRatedToSlider
-})
-export const setPopularFilmToSlider = (filmsPopularToSlider) => ({
-    type: SET_POPULAR_FILMS_TO_SLIDER,
-    filmsPopularToSlider
-})
+const setNowPlayingFilmToSlider = films => ({type: SET_NOW_PLAYING_FILMS_TO_SLIDER, payload: films})
+const setUpcomingFilmToSlider = films => ({type: SET_UPCOMING_FILMS_TO_SLIDER, payload: films})
+const setTopRatedFilmToSlider = films => ({type: SET_TOP_RATED_FILMS_TO_SLIDER, payload: films})
+const setPopularFilmToSlider = films => ({type: SET_POPULAR_FILMS_TO_SLIDER, payload: films})
 export const setInitialStateToFilms = () => ({type: SET_INITIAL_STATE_TO_FILMS})
 
 export const getAllFilmsToSliders = (page = 1) => async dispatch => {
     dispatch(toggleIsFetching(true))
     const getNPMres = await filmAPI.getNowPlayingMovies(page)
-    dispatch(setNowPlayingFilmToSlider(getNPMres.results))
     const getPMres = await filmAPI.getPopularMovies(page)
-    dispatch(setPopularFilmToSlider(getPMres.results))
     const getTRMres = await filmAPI.getTopRatedMovies(page)
-    dispatch(setTopRatedFilmToSlider(getTRMres.results))
     const getUMres = await filmAPI.getUpcomingMovies(page)
+    dispatch(setNowPlayingFilmToSlider(getNPMres.results))
+    dispatch(setPopularFilmToSlider(getPMres.results))
+    dispatch(setTopRatedFilmToSlider(getTRMres.results))
     dispatch(setUpcomingFilmToSlider(getUMres.results))
     dispatch(toggleIsFetching(false))
 }

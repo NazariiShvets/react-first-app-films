@@ -4,7 +4,7 @@ import {Button, Typography} from '@material-ui/core'
 import './Common.scss'
 
 
-export const NavLinkButton = ({to, text, variant, children}) => (
+const NavLinkButton = ({to, text, variant, children}) => (
     <NavLink to={to}>
         <Button>
             <Typography className='nav__link' variant={variant}>
@@ -13,3 +13,5 @@ export const NavLinkButton = ({to, text, variant, children}) => (
         </Button>
     </NavLink>
 )
+
+export default NavLinkButton

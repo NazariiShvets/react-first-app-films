@@ -1,12 +1,11 @@
 import React from 'react'
 
 import NavLinks from './NavLinks'
-import {NavLinkImg} from '../Common/NavLinkImg'
-import {NavLinkButton} from '../Common/NavLinkButton'
+import NavLinkImg from '../Common/NavLinkImg'
+import NavLinkButton from '../Common/NavLinkButton'
 import headerLogoImage from '../../img/main-logo.svg'
 import {Box, Container, Grid} from '@material-ui/core'
 import './Header.scss'
-import {withRouter} from 'react-router-dom'
 
 
 const Header = () => (
@@ -21,6 +20,5 @@ const Header = () => (
     </Box>
 )
 
-
-export default withRouter(Header)
+export default Header
 

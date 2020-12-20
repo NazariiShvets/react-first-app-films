@@ -8,44 +8,44 @@ import {
 
 const initialState = {
     currentPage: 1,
-    isBtnPressed: false,
-    searchText: '',
     totalPages: 0,
     totalResults: 0,
+    searchText: '',
     searchResults: [],
+    isBtnPressed: false,
     isFetching: false,
     isShowResults: false,
 }
 
-const searchReducer = (state = initialState, action = {}) => {
-    switch (action.type) {
+const searchReducer = (state = initialState, {type, payload} = {}) => {
+    switch (type) {
         case TOGGLE_SEARCH_IS_FETCHING :
-            return {...state, isFetching: action.isFetching}
+            return {...state, isFetching: payload}
         case TOGGLE_SEARCH_IS_SHOW_RESULTS :
-            return {...state, isShowResults: action.isShowResults}
+            return {...state, isShowResults: payload}
         case TOGGLE_SEARCH_BTN :
-            return {...state, isBtnPressed: action.isBtnPressed}
+            return {...state, isBtnPressed: payload}
         case SET_SEARCH_TEXT :
-            return {...state, searchText: action.searchText}
+            return {...state, searchText: payload}
         case SET_SEARCH_TOTAL_RESULTS :
-            return {...state, totalResults: action.totalResults}
+            return {...state, totalResults: payload}
         case SET_SEARCH_TOTAL_PAGES :
-            return {...state, totalPages: action.totalPages}
+            return {...state, totalPages: payload}
         case SET_SEARCH_CURRENT_PAGE :
-            return {...state, currentPage: action.currentPage}
+            return {...state, currentPage: payload}
         case SET_SEARCH_RESULTS :
-            return {...state, searchResults: action.searchResults}
+            return {...state, searchResults: payload}
         case SET_SEARCH_INITIAL_STATE:
             return {...initialState}
         default :
             return state
     }
 }
-const isShowResults = isShowResults => ({type: TOGGLE_SEARCH_IS_SHOW_RESULTS, isShowResults})
-const toggleIsFetching = isFetching => ({type: TOGGLE_SEARCH_IS_FETCHING, isFetching})
-const setTotalPages = totalPages => ({type: SET_SEARCH_TOTAL_PAGES, totalPages})
-const setTotalResults = totalResults => ({type: SET_SEARCH_TOTAL_RESULTS, totalResults})
-const setSearchResults = searchResults => ({type: SET_SEARCH_RESULTS, searchResults})
+const isShowResults = bool => ({type: TOGGLE_SEARCH_IS_SHOW_RESULTS, payload: bool})
+const toggleIsFetching = bool => ({type: TOGGLE_SEARCH_IS_FETCHING, payload: bool})
+const setTotalPages = totalPages => ({type: SET_SEARCH_TOTAL_PAGES, payload: totalPages})
+const setTotalResults = totalResults => ({type: SET_SEARCH_TOTAL_RESULTS, payload: totalResults})
+const setSearchResults = searchResults => ({type: SET_SEARCH_RESULTS, payload: searchResults})
 
 export const searchFilms = (inputText, page) => async dispatch => {
     dispatch(toggleIsFetching(true))
@@ -56,9 +56,10 @@ export const searchFilms = (inputText, page) => async dispatch => {
     dispatch(toggleIsFetching(false))
     dispatch(isShowResults(true))
 }
-export const setCurrentPage = currentPage => ({type: SET_SEARCH_CURRENT_PAGE, currentPage})
-export const setSearchText = searchText => ({type: SET_SEARCH_TEXT, searchText})
-export const toggleBtn = isBtnPressed => ({type: TOGGLE_SEARCH_BTN, isBtnPressed})
+
+export const setCurrentPage = currentPage => ({type: SET_SEARCH_CURRENT_PAGE, payload: currentPage})
+export const setSearchText = searchText => ({type: SET_SEARCH_TEXT, payload: searchText})
+export const toggleBtn = isBtnPressed => ({type: TOGGLE_SEARCH_BTN, payload: isBtnPressed})
 export const setInitialState = () => ({type: SET_SEARCH_INITIAL_STATE})
 
 export default searchReducer

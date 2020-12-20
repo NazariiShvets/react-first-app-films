@@ -23,13 +23,13 @@ const serialsPageReducer = (state = initialState, {type, payload}) => {
         case TOGGLE_IS_SERIALS_FETCHING :
             return {...state, isFetching: payload}
         case SET_POPULAR_TVS_TO_SLIDER :
-            return {...state,tvsPopularToSlider: payload}
+            return {...state, tvsPopularToSlider: payload}
         case SET_AIRING_TODAY_TVS_TO_SLIDER:
             return {...state, tvsAiringTodayToSlider: payload}
         case SET_ON_AIR_TVS_TO_SLIDER :
-            return {...state,tvsOnAirToSlider: payload}
+            return {...state, tvsOnAirToSlider: payload}
         case SET_TOP_RATED_TVS_TO_SLIDER:
-            return {...state,tvsTopRatedToSlider: payload}
+            return {...state, tvsTopRatedToSlider: payload}
         default :
             return state
     }
@@ -45,12 +45,12 @@ export const setInitialStateToSerials = () => ({type: SET_INITIAL_STATE_TO_SERIA
 export const getTvs = (page) => async dispatch => {
     dispatch(toggleIsFetching(true))
     const topRatedTvs = await filmAPI.getTopRatedTvs(page)
-    dispatch(setTopRatedTvsToSlider(topRatedTvs.results))
     const popularTvs = await filmAPI.getPopularTvs(page)
-    dispatch(setPopularTvsToSlider(popularTvs.results))
-    const onAirTvs = await filmAPI.getOnAirTvs(page)
-    dispatch(setOnAirTvsToSlider(onAirTvs.results))
     const airingTodayTvs = await filmAPI.getAiringTodayTvs(page)
+    const onAirTvs = await filmAPI.getOnAirTvs(page)
+    dispatch(setTopRatedTvsToSlider(topRatedTvs.results))
+    dispatch(setPopularTvsToSlider(popularTvs.results))
+    dispatch(setOnAirTvsToSlider(onAirTvs.results))
     dispatch(setAiringTodayTvsToSlider(airingTodayTvs.results))
     dispatch(toggleIsFetching(false))
 }

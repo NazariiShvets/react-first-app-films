@@ -1,7 +1,7 @@
 import React from 'react'
 
 import ButtonGroup from '@material-ui/core/ButtonGroup'
-import {NavLinkButton} from '../Common/NavLinkButton'
+import NavLinkButton from '../Common/NavLinkButton'
 
 
 const NavLinks = () => (

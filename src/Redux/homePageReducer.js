@@ -7,12 +7,12 @@ const initialState = {
     isFetching: true,
 }
 
-const homePageReducer = (state = initialState, action) => {
-    switch (action.type) {
+const homePageReducer = (state = initialState, {type, payload}) => {
+    switch (type) {
         case SET_FILMS_TO_SLIDER :
-            return {...state, filmsToSlider: action.filmsToSlider}
+            return {...state, filmsToSlider: payload}
         case TOGGLE_HOME_IS_FETCHING :
-            return {...state, isFetching: action.isFetching}
+            return {...state, isFetching: payload}
         case SET_INITIAL_STATE_TO_HOME :
             return {...initialState}
         default :
@@ -21,11 +21,11 @@ const homePageReducer = (state = initialState, action) => {
 }
 
 
-const toggleIsFetching = (isFetching) => ({type: TOGGLE_HOME_IS_FETCHING, isFetching})
-const setFilmsToSlider = (filmsToSlider) => ({type: SET_FILMS_TO_SLIDER, filmsToSlider})
+const toggleIsFetching = bool => ({type: TOGGLE_HOME_IS_FETCHING, payload: bool})
+const setFilmsToSlider = films => ({type: SET_FILMS_TO_SLIDER, payload: films})
 
 export const setInitialStateToHome = () => ({type: SET_INITIAL_STATE_TO_HOME})
-export const getFilms = (amount) => async dispatch => {
+export const getFilms = amount => async dispatch => {
     dispatch(toggleIsFetching(true))
     const {results} = await filmAPI.getFilms(amount)
     dispatch(setFilmsToSlider(results))
