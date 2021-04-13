@@ -1,7 +1,7 @@
 import * as axios from 'axios'
 
 
-const API_KEY = `api_key=${process.env.REACT_APP_API_KEY}`
+const API_KEY = `api_key=cb9f0447c89ba62ae8b4e196468e5103`
 const NO_IMG = 'https://thumbs.dreamstime.com/b/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132484032.jpg'
 const IMG_PATH = `https://image.tmdb.org/t/p/w1280`
 

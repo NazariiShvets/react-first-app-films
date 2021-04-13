@@ -3,7 +3,12 @@ import {connect} from 'react-redux'
 import {Spinner} from 'reactstrap'
 import Container from '@material-ui/core/Container'
 import {Button} from '@material-ui/core'
-import {getFilmInfo, setInitialStateToFilmCard, toggleIsFilmInCollection} from '../../Redux/filmCardReducer'
+import {
+    getFilmInfo,
+    setFilmType,
+    setInitialStateToFilmCard,
+    toggleIsFilmInCollection
+} from '../../Redux/filmCardReducer'
 import FilmCardAbout from './FilmCardAbout'
 import {removeFilmFromCollection, setFilmToCollection} from '../../Redux/myCollectionReducer'
 import './FilmCard.scss'
@@ -15,6 +20,7 @@ const mapStateToProps = state => ({
     film: state.filmCard.film,
     isFetching: state.filmCard.isFetching,
     isFilmInCollection: state.filmCard.isFilmInCollection,
+    filmType: state.filmCard.filmType
 })
 
 const FilmCard = ({
@@ -22,11 +28,12 @@ const FilmCard = ({
                       removeFilmFromCollection, toggleIsFilmInCollection, isFilmInCollection, ...props
                   }) => {
     useEffect(() => {
-        getFilmInfo(props.match.params.id)
+        getFilmInfo(props.match.params.id, props.filmType)
         return () => {
             setInitialStateToFilmCard()
         }
     }, [props.match.params.id])
+
     if (isFetching) {
         return <Container><Spinner color="danger"/></Container>
     }
@@ -70,5 +77,6 @@ export default connect(mapStateToProps, {
     setInitialStateToFilmCard,
     toggleIsFilmInCollection,
     setFilmToCollection,
-    removeFilmFromCollection
+    removeFilmFromCollection,
+    setFilmType
 })(FilmCard)

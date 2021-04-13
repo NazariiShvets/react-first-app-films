@@ -1,6 +1,10 @@
 import {filmAPI} from '../api/filmAPI'
 import {
-    SET_FILM, SET_INITIAL_STATE_TO_FILM_CARD, TOGGLE_FILM_CARD_IS_FETCHING, TOGGLE_IS_FILM_IN_COLLECTION
+    SET_FILM,
+    SET_FILM_TYPE,
+    SET_INITIAL_STATE_TO_FILM_CARD,
+    TOGGLE_FILM_CARD_IS_FETCHING,
+    TOGGLE_IS_FILM_IN_COLLECTION
 } from './Constants'
 
 
@@ -8,6 +12,7 @@ const initialState = {
     film: {},
     isFetching: true,
     isFilmInCollection: false,
+    filmType: 'movie'
 }
 
 const filmCardReducer = (state = initialState, {type, payload}) => {
@@ -20,6 +25,9 @@ const filmCardReducer = (state = initialState, {type, payload}) => {
             return {...state, isFilmInCollection: payload}
         case SET_INITIAL_STATE_TO_FILM_CARD :
             return {...initialState}
+        case SET_FILM_TYPE :
+            console.log(payload,'payload');
+            return {...state, filmType: payload}
         default :
             return state
     }
@@ -29,6 +37,7 @@ const toggleIsFetching = isFetching => ({type: TOGGLE_FILM_CARD_IS_FETCHING, pay
 const setFilm = film => ({type: SET_FILM, payload: film})
 export const toggleIsFilmInCollection = bool => ({type: TOGGLE_IS_FILM_IN_COLLECTION, payload: bool})
 export const setInitialStateToFilmCard = () => ({type: SET_INITIAL_STATE_TO_FILM_CARD})
+export const setFilmType = (type) => ({type: SET_FILM_TYPE, payload: type})
 
 export const getFilmInfo = (id, type = 'movie') => async (dispatch, getState) => {
     dispatch(toggleIsFetching(true))

@@ -31,7 +31,7 @@ const Search = ({searchText, currentPage, searchType, setInitialState, searchFil
     return (<>
         <div className='container container-flex-mt3'>
             <input type='text' className='p-3' onChange={inputHandler} value={inputText}/>
-            <button className='btn btn-danger ml-3 p-3' onClick={btnHandler} name='FILMS'>Искать</button>
+            <button className='btn btn-danger ml-3 p-3' onClick={btnHandler} name='FILMS'>Search</button>
         </div>
         {props.isBtnPressed ? !props.isShowResults
             ? <div className={'container'}><Spinner/></div>

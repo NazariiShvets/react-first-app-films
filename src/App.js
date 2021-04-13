@@ -23,9 +23,7 @@ const App = () => (
                 <Route path='/info/:id' component={FilmCard}/>
                 <Route path='/search' component={Search}/>
                 <Route path='/my_collection' component={MyCollection}/>
-                <Route path='/' exact>
-                    <Redirect to='/home'/>
-                </Route>
+                <Redirect to='/home'/>
             </Switch>
         </div>
         <Footer/>

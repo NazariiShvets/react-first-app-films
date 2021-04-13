@@ -4,6 +4,7 @@ import {Spinner} from 'reactstrap'
 import {Container} from '@material-ui/core'
 import FilmsSlider from '../Common/FilmsSlider'
 import {getTvs, setInitialStateToSerials} from '../../Redux/serialsPageReducer'
+import {setFilmType} from "../../Redux/filmCardReducer";
 
 
 const mapStateToProps = state => ({
@@ -12,10 +13,12 @@ const mapStateToProps = state => ({
     tvsOnAirToSlider: state.serialsPage.tvsOnAirToSlider,
     tvsAiringTodayToSlider: state.serialsPage.tvsAiringTodayToSlider,
     isFetching: state.serialsPage.isFetching,
+    filmType: state.filmCard.filmType
 })
 
-const Serials = ({setInitialStateToSerials, getTvs, ...props}) => {
+const Serials = ({setInitialStateToSerials, getTvs, setFilmType, filmType, ...props}) => {
     useEffect(() => {
+        setFilmType('tv')
         getTvs(1)
         return () => {
             setInitialStateToSerials()
@@ -36,4 +39,4 @@ const Serials = ({setInitialStateToSerials, getTvs, ...props}) => {
     )
 }
 
-export default connect(mapStateToProps, {setInitialStateToSerials, getTvs})(Serials)
+export default connect(mapStateToProps, {setInitialStateToSerials, getTvs, setFilmType})(Serials)
