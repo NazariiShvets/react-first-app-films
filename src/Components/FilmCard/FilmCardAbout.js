@@ -2,7 +2,13 @@ import React from 'react'
 
 
 // insert 6000000 , output 6 000 000
-const formatedNum = num => num?.toString()?.split('')?.reverse()?.map((num, id) => !(id % 3) ? `${num} ` : num)?.reverse()?.join('')
+const formatedNum = num => num
+        ?.toString()
+        ?.split('')
+        ?.reverse()
+        ?.map((num, id) => !(id % 3) ? `${num} ` : num)
+        ?.reverse()
+        ?.join('')
 
 const numOrNotEnough = num => {
     const fnum = formatedNum(num)
